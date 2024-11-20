@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Blog Post</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Add a New Blog Post</h1>
+    </header>
+
+    <main>
+        <form action="{{ url_for('add') }}" method="POST" class="blog-form">
+            <!-- Author Input -->
+            <div class="form-group">
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author" placeholder="Enter your name" required>
+            </div>
+
+            <!-- Title Input -->
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" placeholder="Enter the post title" required>
+            </div>
+
+            <!-- Content Input -->
+            <div class="form-group">
+                <label for="content">Content:</label>
+                <textarea id="content" name="content" rows="5" placeholder="Write your content here..." required></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-actions">
+                <button type="submit">Add Post</button>
+                <a href="{{ url_for('index') }}" class="cancel-link">Cancel</a>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; {{ year }} My Blog. manuel.putzu@gmx.de • linkedin.com/in/manuel-putzu-medialab</p>
+    </footer>
+</body>
+</html>

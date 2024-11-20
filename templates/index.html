@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>My Blog</h1>
+    </header>
+
+    <main>
+        <!-- Blog posts section -->
+        <section class="posts">
+            {% if posts %}
+                {% for post in posts %}
+                    <article class="post">
+                        <h2>{{ post['title'] }}</h2>
+                        <p><strong>Author:</strong> {{ post['author'] }}</p>
+                        <p>{{ post['content'] }}</p>
+
+                        <!-- Update and Delete buttons -->
+                        <div class="post-actions">
+                            <button onclick="location.href='{{ url_for('update', post_id=post['id']) }}'">Update</button>
+                            <button onclick="location.href='{{ url_for('delete', post_id=post['id']) }}'">Delete</button>
+                        </div>
+                    </article>
+                {% endfor %}
+            {% else %}
+                <p>No blog posts available. Be the first to add one!</p>
+            {% endif %}
+        </section>
+
+        <!-- Add new post section -->
+        <section class="add-post">
+            <h2><a href="{{ url_for('add') }}">Add a New Blog Post</a></h2>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; {{ year }} My Blog. manuel.putzu@gmx.de • linkedin.com/in/manuel-putzu-medialab</p>
+    </footer>
+</body>
+</html>
